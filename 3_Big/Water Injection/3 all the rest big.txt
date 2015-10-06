@@ -1,0 +1,379 @@
+RESULTS SIMULATOR IMEX 201210
+
+INUNIT SI
+WSRF WELL 1
+WSRF GRID TIME
+WSRF SECTOR TIME
+OUTSRF WELL LAYER NONE
+OUTSRF GRID SO SG SW PRES OILPOT BPP SSPRES WINFLUX
+WPRN GRID TIME
+OUTPRN GRID SO SG SW
+OUTPRN RES NONE
+**$  Distance units: m 
+RESULTS XOFFSET           0.0000
+RESULTS YOFFSET           0.0000
+RESULTS ROTATION           0.0000  **$  (DEGREES)
+RESULTS AXES-DIRECTIONS 1.0 -1.0 1.0
+**$ ***************************************************************************
+**$ Definition of fundamental cartesian grid
+**$ ***************************************************************************
+GRID VARI 34 34 34
+KDIR DOWN
+DI IVAR 
+ 0.01 10*0.067 0.01 10*0.067 0.01 10*0.067 0.01 ** fracture spacing of 0.67m
+DJ JVAR 
+ 0.01 10*0.067 0.01 10*0.067 0.01 10*0.067 0.01
+DK KVAR
+ 0.01 10*0.067 0.01 10*0.067 0.01 10*0.067 0.01
+DTOP
+ 1156*1000
+
+**Modified Porosity
+POR IJK
+1:34 1:34 1:34  0.2 **matrix
+
+1:34 1:34 1:1   0.0015 **fracture 
+1:34 1:34 12:12 0.0015
+1:34 1:34 23:23 0.0015
+1:34 1:34 34:34 0.0015
+
+1:34 1:1 1:34   0.0015
+1:34 12:12 1:34 0.0015
+1:34 23:23 1:34 0.0015
+1:34 34:34 1:34 0.0015
+
+1:1 1:34 1:34   0.0015
+12:12 1:34 1:34 0.0015
+23:23 1:34 1:34 0.0015
+34:34 1:34 1:34 0.0015
+
+**Modified Multiplier
+VOLMOD IJK
+1:34 1:34 1:1   1.0E+7 **maximum is not 1.0E+4, can use 1.0E+7 but will get errors above this
+1:34 1:34 12:12 1.0E+7
+1:34 1:34 23:23 1.0E+7
+1:34 1:34 34:34 1.0E+7
+
+1:34 1:1 1:34   1.0E+7
+1:34 12:12 1:34 1.0E+7
+1:34 23:23 1:34 1.0E+7
+1:34 34:34 1:34 1.0E+7
+
+1:1 1:34 1:34   1.0E+7
+12:12 1:34 1:34 1.0E+7
+23:23 1:34 1:34 1.0E+7
+34:34 1:34 1:34 1.0E+7
+
+**Modified Permeability I
+PERMI CON           10 **matrix
+
+PERMI IJK
+1:34 1:34 1:1   15557 **fracture
+1:34 1:34 12:12 15557 
+1:34 1:34 23:23 15557 
+1:34 1:34 34:34 15557 
+
+1:34 1:1 1:34   15557 
+1:34 12:12 1:34 15557 
+1:34 23:23 1:34 15557 
+1:34 34:34 1:34 15557 
+
+1:1 1:34 1:34   15557 
+12:12 1:34 1:34 15557 
+23:23 1:34 1:34 15557 
+34:34 1:34 1:34 15557 
+
+**Modified Permeability J
+PERMJ CON           10
+PERMJ IJK
+1:34 1:34 1:1   15557 
+1:34 1:34 12:12 15557 
+1:34 1:34 23:23 15557 
+1:34 1:34 34:34 15557 
+
+1:34 1:1 1:34   15557 
+1:34 12:12 1:34 15557 
+1:34 23:23 1:34 15557 
+1:34 34:34 1:34 15557 
+
+
+1:1 1:34 1:34   15557 
+12:12 1:34 1:34 15557 
+23:23 1:34 1:34 15557 
+34:34 1:34 1:34 15557 
+
+
+**Modified Permeability K
+PERMK CON           10
+PERMK IJK
+
+1:34 1:34 1:1   15557 
+1:34 1:34 12:12 15557 
+1:34 1:34 23:23 15557 
+1:34 1:34 34:34 15557 
+
+1:34 1:1 1:34   15557 
+1:34 12:12 1:34 15557 
+1:34 23:23 1:34 15557 
+1:34 34:34 1:34 15557 
+
+1:1 1:34 1:34   15557 
+12:12 1:34 1:34 15557 
+23:23 1:34 1:34 15557 
+34:34 1:34 1:34 15557 
+
+
+**$  0 = null block, 1 = active block
+NULL CON            1
+**$  0 = pinched block, 1 = active block
+PINCHOUTARRAY CON            1
+PRPOR 101.3
+CPOR 2.37e-5
+MODEL BLACKOIL 
+TRES 70
+**$         p        Rs        Bo        Eg      viso       visg            co
+PVT EG 1
+
+**$         p        Rs        Bo        Eg      viso       visg            co
+      101.325  0.678902    1.0455   0.84551   2.54115  0.0124995  4.35113e-006
+      527.904   2.08715   1.04838   4.43496   2.40806  0.0125406  4.35113e-006
+      954.482   3.69433    1.0517   8.07294   2.27459  0.0125947  4.35113e-006
+      1381.06   5.43371   1.05531   11.7597    2.1482  0.0126575  4.35113e-006
+      1807.64    7.2747   1.05917   15.4955   2.03107  0.0127275  4.35113e-006
+      2234.22   9.19919   1.06324   19.2803   1.92355   0.012804  4.35113e-006
+       2660.8   11.1951   1.06749   23.1141   1.82526  0.0128865  4.35113e-006
+      3087.37   13.2536    1.0719   26.9967   1.73552  0.0129747  4.35113e-006
+      3513.95   15.3682   1.07648   30.9277   1.65354  0.0130683  4.35113e-006
+      3940.53   17.5335    1.0812   34.9066   1.57856  0.0131673  4.35113e-006
+      4367.11   19.7454   1.08605   38.9328   1.50986  0.0132716  4.35113e-006
+      4793.69   22.0003   1.09104   43.0052   1.44678  0.0133811  4.35113e-006
+      5220.27   24.2952   1.09616   47.1228   1.38871  0.0134959  4.35113e-006
+      5646.84   26.6276   1.10139   51.2843   1.33515  0.0136158  4.35113e-006
+      6073.42   28.9953   1.10675   55.4881   1.28561  0.0137408  4.35113e-006
+         6500   31.3963   1.11221   59.7322    1.2397   0.013871  4.35113e-006
+        12200   66.0479   1.19478   118.923  0.845675  0.0160893  3.55333e-006
+        17900   104.252   1.29231    176.37   0.65031  0.0190018  2.16001e-006
+        23600   145.045   1.40234   224.994    0.5337  0.0221592  1.50933e-006
+        29300    187.91   1.52333   263.695  0.455946    0.02522  1.14038e-006
+        35000   232.517   1.65417   294.304  0.400196  0.0280474  9.05894e-007
+BWI 1.01501
+CVW 0
+CW 4.26251e-007
+DENSITY OIL 837
+DENSITY WATER 1000
+REFPW 19620
+VWI 0.440258
+GRAVITY GAS 0.65
+PTYPE CON            1
+ROCKFLUID
+RPT 1
+**$        Sw         krw      krow
+**$        So         kro      krwo
+**$        Sw         krw      krow      Pcow
+SWT
+ SMOOTHEND POWERQ
+          0.2           0       0.8
+        0.225  0.00117187  0.703125
+         0.25   0.0046875    0.6125
+        0.275   0.0105469  0.528125
+          0.3     0.01875      0.45
+        0.325   0.0292969  0.378125
+         0.35   0.0421875    0.3125
+        0.375   0.0574219  0.253125
+          0.4       0.075       0.2
+        0.425   0.0949219  0.153125
+         0.45    0.117187    0.1125
+        0.475    0.141797  0.078125
+          0.5     0.16875      0.05
+        0.525    0.198047  0.028125
+         0.55    0.229688    0.0125
+        0.575    0.263672  0.003125
+          0.6         0.3         0
+**$        Sl         krg      krog
+SLT
+          0.4         0.3         0
+     0.434375    0.263672  0.003125
+      0.46875    0.229688    0.0125
+     0.503125    0.198047  0.028125
+       0.5375     0.16875      0.05
+     0.571875    0.141797  0.078125
+      0.60625    0.117188    0.1125
+     0.640625   0.0949219  0.153125
+        0.675       0.075       0.2
+     0.709375   0.0574219  0.253125
+      0.74375   0.0421875    0.3125
+     0.778125   0.0292969  0.378125
+       0.8125     0.01875      0.45
+     0.846875   0.0105469  0.528125
+      0.88125   0.0046875    0.6125
+     0.915625  0.00117188  0.703125
+         0.95           0       0.8
+**
+RPT 2
+**$        Sw         krw      krow
+**$        So         kro      krwo
+**$        So       kro      krwo
+**$        Sw       krw      krow
+**$        Sw       krw      krow      Pcow
+SWT
+ SMOOTHEND POWERQ
+            0         0         1
+          0.1       0.1       0.9
+          0.2       0.2       0.8
+          0.3       0.3       0.7
+          0.4       0.4       0.6
+          0.5       0.5       0.5
+          0.6       0.6       0.4
+          0.7       0.7       0.3
+          0.8       0.8       0.2
+          0.9       0.9       0.1
+            1         1         0
+**$        Sl         krg      krog
+**$        Sl       krg      krog
+SLT
+            0         1         0
+          0.1       0.9       0.1
+          0.2       0.8       0.2
+          0.3       0.7       0.3
+          0.4       0.6       0.4
+          0.5       0.5       0.5
+          0.6       0.4       0.6
+          0.7       0.3       0.7
+          0.8       0.2       0.8
+          0.9       0.1       0.9
+            1         0         1
+
+
+
+**
+
+RTYPE CON 1
+RTYPE IJK
+
+1:34 1:34 1:1   2 **fracture
+1:34 1:34 12:12 2
+1:34 1:34 23:23 2
+1:34 1:34 34:34 2
+
+1:34 1:1 1:34   2
+1:34 12:12 1:34 2
+1:34 23:23 1:34 2
+1:34 34:34 1:34 2
+
+1:1 1:34 1:34   2
+12:12 1:34 1:34 2
+23:23 1:34 1:34 2
+34:34 1:34 1:34 2
+
+INITIAL
+USER_INPUT
+
+PRES CON 20000
+
+
+CHANGE
+
+
+PB CON         10000
+NUMERICAL
+RUN
+DATE 2015  6 30
+DATE 2015  7  5
+DATE 2015  7 10
+DATE 2015  7 15
+DATE 2015  7 20
+DATE 2015  7 25
+DATE 2015  7 30
+DATE 2015  8  4
+DATE 2015  8  9
+DATE 2015  8 14
+DATE 2015  8 19
+DATE 2015  8 24
+DATE 2015  8 29
+DATE 2015  9  3
+DATE 2015  9  8
+DATE 2015  9 13
+DATE 2015  9 18
+DATE 2015  9 23
+DATE 2015  9 28
+DATE 2015 10  3
+DATE 2015 10  8
+DATE 2015 10 13
+DATE 2015 10 18
+DATE 2015 10 23
+DATE 2015 10 28
+DATE 2015 11  2
+DATE 2015 11  7
+DATE 2015 11 12
+DATE 2015 11 17
+DATE 2015 11 22
+DATE 2015 11 27
+DATE 2015 12  2
+DATE 2015 12  7
+DATE 2015 12 12
+DATE 2015 12 17
+DATE 2015 12 22
+DATE 2015 12 27
+STOP
+
+RESULTS RELPERMCORR NUMROCKTYPE 1
+RESULTS RELPERMCORR CORRVALS 0.2 0.2 0.4 0.4 0.2 0.2 0.05 0.05
+RESULTS RELPERMCORR CORRVALS 0.8 0.3 0.3 0.8 2 2 2 2
+RESULTS RELPERMCORR CORRVALS_HONARPOUR -99999 -99999 -99999 -99999 -99999 -99999 -99999 -99999
+RESULTS RELPERMCORR NOSWC false
+RESULTS RELPERMCORR CALINDEX  0
+RESULTS RELPERMCORR STOP
+
+RESULTS SPEC 'PVT Type'  
+RESULTS SPEC SPECNOTCALCVAL -99999      
+RESULTS SPEC REGION 'All Layers (Whole Grid)'
+RESULTS SPEC REGIONTYPE 'REGION_WHOLEGRID'
+RESULTS SPEC LAYERNUMB 0
+RESULTS SPEC PORTYPE 1
+RESULTS SPEC CON 1           
+RESULTS SPEC SPECKEEPMOD 'YES'
+RESULTS SPEC STOP
+
+
+RESULTS SPEC 'Bubble Point Pressure'  
+RESULTS SPEC SPECNOTCALCVAL -99999      
+RESULTS SPEC REGION 'PVT Type 1'
+RESULTS SPEC REGIONTYPE 'REGION_TABLE'
+RESULTS SPEC LAYERNUMB 1
+RESULTS SPEC PORTYPE 1
+RESULTS SPEC CON 6500        
+RESULTS SPEC SPECKEEPMOD 'YES'
+RESULTS SPEC STOP
+
+
+RESULTS SPEC 'Permeability I'  
+RESULTS SPEC SPECNOTCALCVAL -99999      
+RESULTS SPEC REGION 'All Layers (Whole Grid)'
+RESULTS SPEC REGIONTYPE 'REGION_WHOLEGRID'
+RESULTS SPEC LAYERNUMB 0
+RESULTS SPEC PORTYPE 1
+RESULTS SPEC CON 10          
+RESULTS SPEC SPECKEEPMOD 'YES'
+RESULTS SPEC STOP
+
+
+RESULTS SPEC 'Grid Thickness'  
+RESULTS SPEC SPECNOTCALCVAL -99999      
+RESULTS SPEC REGION 'All Layers (Whole Grid)'
+RESULTS SPEC REGIONTYPE 'REGION_WHOLEGRID'
+RESULTS SPEC LAYERNUMB 0
+RESULTS SPEC PORTYPE 1
+RESULTS SPEC CON 1.5         
+RESULTS SPEC SPECKEEPMOD 'YES'
+RESULTS SPEC STOP
+
+
+RESULTS SPEC 'Grid Top'  
+RESULTS SPEC SPECNOTCALCVAL -99999      
+RESULTS SPEC REGION 'Layer 1 - Whole layer'
+RESULTS SPEC REGIONTYPE 'REGION_LAYER'
+RESULTS SPEC LAYERNUMB 1
+RESULTS SPEC PORTYPE 1
+RESULTS SPEC CON 1000        
+RESULTS SPEC SPECKEEPMOD 'YES'
+RESULTS SPEC STOP
